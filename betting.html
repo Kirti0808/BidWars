@@ -1,0 +1,189 @@
+<!DOCTYPE html>
+<html>
+  <head>
+    <meta charset="utf-8">
+    <title>Betting Session</title>
+    <link href="https://fonts.googleapis.com/css?family=Courgette" rel="stylesheet">
+    <link href="https://fonts.googleapis.com/css?family=Berkshire+Swash" rel="stylesheet">
+    <script src="https://www.gstatic.com/firebasejs/4.9.0/firebase.js"></script>
+    <script src="https://www.gstatic.com/firebasejs/4.9.0/firebase-app.js"></script>
+    <script src="https://www.gstatic.com/firebasejs/4.9.0/firebase-auth.js"></script>
+    <script src="https://www.gstatic.com/firebasejs/4.9.0/firebase-database.js"></script>
+    <script src="https://www.gstatic.com/firebasejs/4.9.0/firebase-firestore.js"></script>
+    <script src="https://www.gstatic.com/firebasejs/4.9.0/firebase-storage.js"></script>
+    <script>
+    	  // Initialize Firebase
+    	  var config = {
+          // Upload Your Credentials Here
+    	  };
+    	  firebase.initializeApp(config);
+    </script>
+  </head>
+  <body>
+    <button type="button" name="button" onclick="exitGame()" > Exit The Game</button>
+    <p >You are Playing With <span id="opponent_details" >opponent</span></p>
+    <p>Bet On the following Parts </p>
+    <p id = "marks"></p>
+    <input type="number" name="Money" placeholder="Enter The Amount You Want to Bet" id="money_field">
+    <button type="button" name="button" id="money_submit" onclick="submitBettingMoney()">Submit</button>
+    <div id="fields" style="display: none">
+      <button type="button" name="button" id="Brakes" onclick="brakes()">Brakes</button>
+      <button type="button" name="button" id="Engine" onclick="engine()">Engine</button>
+      <button type="button" name="button" id="Tyres" onclick="tyres()">Tyres</button>
+    </div>
+  </body>
+  <script type="text/javascript">
+
+  var player,oppID,yours, mine,a;
+  var usb,use,ust,userRef,opp;
+  var opb,ope, opt;
+  firebase.auth().onAuthStateChanged(function(user) {
+    if (user) {
+      player = user.uid;
+      firebase.database().ref("users/"+user.uid+"/status").set("false");
+      userRef = firebase.firestore().collection("UsersUID").doc(user.uid);
+      firebase.firestore().collection("ongoing").doc(user.uid).onSnapshot(function(doc){
+        oppID = `${doc.data().with_uid}`;
+        opp = firebase.firestore().collection("UsersUID").doc(oppID);
+        opp.onSnapshot(function(doc) {
+          opb = `${doc.data().Brakes}`;
+          ope = `${doc.data().Engine}`;
+          opt = `${doc.data().Tyres}`;
+          yours = `${doc.data().Balance}`;
+          document.getElementById('opponent_details').innerHTML = `${doc.data().Name}`;
+        });
+      });
+
+      userRef.onSnapshot(function(doc) {
+        usb = `${doc.data().Brakes}`;
+        use = `${doc.data().Engine}`;
+        ust = `${doc.data().Tyres}`;
+        mine = `${doc.data().Balance}`;
+      });
+
+    }
+    else {
+      window.location.href = "login.html";
+    }
+  });
+
+  function brakes() {
+    console.log(usb,opb);
+    if(usb>=opb){
+      document.getElementById('marks').innerHTML = "You Earned +"+ a +" pts";
+      var bal;
+      firebase.firestore().collection("UsersUID").doc(player).get().then(function(doc) {
+        bal = parseInt(doc.data().Balance);
+        firebase.firestore().collection("UsersUID").doc(player).update({
+          Balance:(bal+a)
+        }).then(function(){
+          return;
+        });
+      });
+      document.getElementById('fields').style.display = "none";
+      document.getElementById('Brakes').style.display = "none";
+    }
+      else{
+        document.getElementById('marks').innerHTML = "You lose " + a + "pts";
+        var bal;
+        firebase.firestore().collection("UsersUID").doc(player).get().then(function(doc) {
+          bal = parseInt(doc.data().Balance);
+          firebase.firestore().collection("UsersUID").doc(player).update({
+            Balance:(bal-a)
+          }).then(function(){
+            return;
+          });
+        });
+        document.getElementById('fields').style.display = "none";
+        document.getElementById('Brakes').style.display = "none";
+      }
+  }
+
+  function engine() {
+    console.log(use,ope);
+    if(use>=ope){
+      document.getElementById('marks').innerHTML = "You eraned +" + a + "pts";
+      var bal;
+      firebase.firestore().collection("UsersUID").doc(player).get().then(function(doc) {
+        bal = parseInt(doc.data().Balance);
+        firebase.firestore().collection("UsersUID").doc(player).update({
+          Balance:(bal+a)
+        }).then(function(){
+          return;
+        });
+      });
+      document.getElementById('fields').style.display = "none";
+      document.getElementById('Engine').style.display = "none";
+    }
+    else{
+      document.getElementById('marks').innerHTML = "You lose " + a + "pts";
+      var bal;
+      firebase.firestore().collection("UsersUID").doc(player).get().then(function(doc) {
+        bal = parseInt(doc.data().Balance);
+        firebase.firestore().collection("UsersUID").doc(player).update({
+          Balance:(bal-a)
+        }).then(function(){
+          return;
+        });
+      });
+      document.getElementById('fields').style.display = "none";
+      document.getElementById('Brakes').style.display = "none";
+    }
+  }
+
+  function tyres() {
+    console.log(ust,opt);
+    if(ust>=opt){
+      document.getElementById('marks').innerHTML = "You earned" + a + "pts";
+      var bal;
+      firebase.firestore().collection("UsersUID").doc(player).get().then(function(doc) {
+        bal = parseInt(doc.data().Balance);
+        firebase.firestore().collection("UsersUID").doc(player).update({
+          Balance:(bal+a)
+        }).then(function(){
+          return;
+        });
+      });
+      document.getElementById('fields').style.display = "none";
+      document.getElementById('Tyres').style.display = "none";
+    }
+    else{
+      document.getElementById('marks').innerHTML = "You lose " + a + "pts";
+      var bal;
+      firebase.firestore().collection("UsersUID").doc(player).get().then(function(doc) {
+        bal = parseInt(doc.data().Balance);
+        firebase.firestore().collection("UsersUID").doc(player).update({
+          Balance:(bal-a)
+        }).then(function(){
+          return;
+        });
+      });
+      document.getElementById('fields').style.display = "none";
+      document.getElementById('Tyres').style.display = "none";
+    }
+  }
+
+  function submitBettingMoney() {
+      a =   document.getElementById("money_field").value;
+      if(a>mine){
+        document.getElementById('marks').innerHTML = "You Don't have Enough Money";
+      }
+      else if(a>yours){
+        document.getElementById('marks').innerHTML = "Your opponent Don't have Enough Money";
+      }
+      else{
+        document.getElementById('fields').style.display = 'block';
+      }
+  }
+
+  function exitGame() {
+    firebase.firestore().collection("ongoing").doc(player).delete()
+    .then(function(){
+    window.location.href = "main.html";
+  }).catch(function(error) {
+        console.error("Error removing document: ", error);
+    });
+  }
+
+  </script>
+</html>

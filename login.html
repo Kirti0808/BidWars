@@ -1,0 +1,261 @@
+<!DOCTYPE html>
+<html>
+  <head>
+    <title>Login n Registration</title>
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link href="https://fonts.googleapis.com/css?family=Courgette" rel="stylesheet">
+    <link href="https://fonts.googleapis.com/css?family=Berkshire+Swash" rel="stylesheet">
+    <script src="https://www.gstatic.com/firebasejs/4.9.0/firebase.js"></script>
+    <script src="https://www.gstatic.com/firebasejs/4.9.0/firebase-app.js"></script>
+    <script src="https://www.gstatic.com/firebasejs/4.9.0/firebase-auth.js"></script>
+    <script src="https://www.gstatic.com/firebasejs/4.9.0/firebase-database.js"></script>
+    <script src="https://www.gstatic.com/firebasejs/4.9.0/firebase-firestore.js"></script>
+    <script src="https://www.gstatic.com/firebasejs/4.9.0/firebase-storage.js"></script>
+    <script>
+    	  // Initialize Firebase
+    	  var config = {
+          // Upload Your Credentials Here
+    	  };
+    	  firebase.initializeApp(config);
+    </script>
+  </head>
+  <style>
+    body{
+      background-image:linear-gradient(rgba(0, 0, 0, 0.8), rgba(0, 0, 0, 0.8)), url(bg.jpg);
+      height: 100vh;
+      background-size: cover;
+      background-position: center;
+      margin: 0;
+      padding: 0;
+    }
+    .login-page{
+      width:100%;
+      margin: auto;
+    }
+    .form{
+      z-index: 1;
+      max-width: 360px;
+      margin-left: auto;
+      margin-right: auto;
+      padding-top: 45px;
+      text-align: center;
+
+    }
+    .form input{
+      font-family: "Roboto", sans-serif;
+      outline: 1;
+      background: #f2f2f2;
+      width: 100%;
+      margin: 0 0 15px;
+      padding: 15px;
+      box-sizing: border-box;
+      font-size: 14px;
+    }
+    .form button{
+      font-family: "Roboto", sans-serif;
+      text-transform: uppercase;
+      outline: 0;
+      background: #4CAF50;
+      width: 100%;
+      border: 0px;
+      padding: 15px;
+      color: #ffffff;
+      font-size: 14px;
+      cursor: pointer;
+    }
+    .form button:hover, .form button:active{
+      background: #43A047;
+    }
+    .form .message{
+      margin: 15px 0 0;
+      color: #ffffff;
+      font-size: 18px;
+    }
+    .form .message a{
+      color: #0000ff;
+      text-decoration: none;
+    }
+    .login-form {
+      background: rgba(140, 140, 140, 0.5);
+      padding: 40px;
+      border-radius: 7px;
+    }
+    .form .registration-form{
+      display: none;
+      padding: 40px;
+      background: rgba(140, 140, 140, 0.5);
+      border-radius: 7px;
+    }
+    #awd-site-logo {
+      float: left;
+    }
+    #fest_logo {
+      width: auto;
+      height: auto;
+      max-height: 6rem;
+    }
+    .logos {
+      text-align: right;
+      animation: fadeInDown 1.5s;
+    }
+    .start .visible {
+        visibility: visible;
+    }
+    #nit_logo {
+      height: 5rem;
+    }
+    .logo {
+      height: 5rem!important;
+      width: 5rem!important;
+      z-index: 2;
+    }
+    a, a > * {
+      color: inherit;
+      text-decoration: none;
+      text-decoration-line: none;
+      text-decoration-style: initial;
+      text-decoration-color: initial;
+    }
+    .Title1{
+      font-family: 'Berkshire Swash', cursive;
+      color:#ffffff;
+      font-size:50px;
+      padding-top:0px;
+      margin:0px
+    }
+    .Title2{
+      font-family:'Courgette', cursive;
+      color:#ffffff;
+      font-size:40px;
+    }
+    @media only screen and (max-width: 320px) {
+      .Title1{
+        font-family: 'Berkshire Swash', cursive;
+        color:#ffffff;
+        font-size:30px;
+        padding-top:0px;
+        margin:0px
+      }
+      .Title2{
+        font-family:'Courgette', cursive;
+        color:#ffffff;
+        font-size:20px;
+      }
+      .form{
+        padding-top: 1px;
+        width: 280px;
+        height: auto;
+      }
+      #fest_logo {
+        width: auto;
+        height: auto;
+        max-height: 3rem;
+      }
+      #nit_logo {
+        height: 3rem;
+      }
+      .logo {
+        height: 3rem!important;
+        width: 3rem!important;
+        z-index: 2;
+      }
+    }
+    @media only screen and (max-width: 375px) {
+      .Title1{
+        font-family: 'Berkshire Swash', cursive;
+        color:#ffffff;
+        font-size:35px;
+        padding-top:0px;
+        margin:0px
+      }
+      .Title2{
+        font-family:'Courgette', cursive;
+        color:#ffffff;
+        font-size:25px;
+      }
+      #fest_logo {
+        width: auto;
+        height: auto;
+        max-height: 3rem;
+      }
+      #nit_logo {
+        height: 3rem;
+      }
+      .logo {
+        height: 3rem!important;
+        width: 3rem!important;
+        z-index: 2;
+      }
+    }
+    @media only screen and (max-width: 425px) {
+      .Title1{
+        font-family: 'Berkshire Swash', cursive;
+        color:#ffffff;
+        font-size:40px;
+        padding-top:0px;
+        margin:0px
+      }
+      .Title2{
+        font-family:'Courgette', cursive;
+        color:#ffffff;
+        font-size:30px;
+      }
+      #fest_logo {
+        width: auto;
+        height: auto;
+        max-height: 3rem;
+      }
+      #nit_logo {
+        height: 3rem;
+      }
+      .logo {
+        height: 3rem!important;
+        width: 3rem!important;
+        z-index: 2;
+      }
+    }
+  </style>
+  <body>
+    <div class="login-page">
+      <header id="awd-site-header">
+    <div id="awd-site-logo" class="animated" data-animation="fadeInDown" data-animation-delay="500">
+        <a href="http://www.avskr.in/"><img id="fest_logo" src='Aavishkar Logo.png' alt="AAVISHKAR" /></a>
+    </div>
+    <div class='logos'>
+        <a href="http://www.nitdgp.ac.in/"><img id="nit_logo" src='nit.png' alt="NIT Durgapur"/></a>
+        <a href='#'><img class="logo"  src='white_line.png' /></a>
+        <a href='http://www.saenitd.com/'><img class="logo"  src='sae1.png' /></a>
+        <a href='http://nitdgplug.org/'><img class="logo" src='glug.png' /></a>
+        <a href='http://www.mntc.in'><img class="logo"  src='mntc.png' /></a>
+    </div>
+  </header>
+
+      <div class="form">
+        <h1 class="Title1">Aavishkar 2k18</h1>
+        <h1 class="Title2">Event Name</h1>
+        <form class="registration-form">
+          <input type="text" placeholder="Name" id="name">
+          <input type="email" placeholder="Email" id="email">
+          <input type="password" placeholder="Password" id="password">
+          <input type="text" placeholder="CollegeName" id="college_name">
+          <input type="tel" placeholder="Phone" id="phone">
+          <button type="button" onclick="signup()">Create</button>
+          <p class="message">Already Registered? <a href="#">Login</a> </p>
+        </form>
+        <form class="login-form">
+          <input type="email" placeholder="Email" id="lemail">
+          <input type="password" placeholder="Password" id="lpassword">
+          <button type="button" onclick="login()">Login</button>
+          <p class="message">NotRegisterd? <a href="#">Register</a></p>
+        </form>
+      </div>
+    </div>
+    <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.3.1/jquery.min.js"></script>
+    <script type="text/javascript">
+      $('.message a').click(function(){
+        $('form').animate({height: "toggle", opacity:"toggle"}, "slow")
+      })
+    </script>
+  </body>
+  <script type="text/javascript" src="main.js"></script>
+</html>

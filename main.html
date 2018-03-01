@@ -1,0 +1,565 @@
+<!DOCTYPE html>
+<html>
+<head>
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<link rel="stylesheet" href="main.css">
+<link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap.min.css">
+<script src="https://ajax.googleapis.com/ajax/libs/jquery/3.3.1/jquery.min.js"></script>
+<script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/js/bootstrap.min.js"></script>
+<link href="https://fonts.googleapis.com/css?family=Kavivanar" rel="stylesheet">
+<link href="https://fonts.googleapis.com/css?family=Kaushan+Script|Roboto" rel="stylesheet">
+<script src="https://www.gstatic.com/firebasejs/4.9.0/firebase.js"></script>
+<script src="https://www.gstatic.com/firebasejs/4.9.0/firebase-app.js"></script>
+<script src="https://www.gstatic.com/firebasejs/4.9.0/firebase-auth.js"></script>
+<script src="https://www.gstatic.com/firebasejs/4.9.0/firebase-database.js"></script>
+<script src="https://www.gstatic.com/firebasejs/4.9.0/firebase-firestore.js"></script>
+<script src="https://www.gstatic.com/firebasejs/4.9.0/firebase-storage.js"></script>
+<script type="text/javascript" src="main.js">
+<script>
+	  // Initialize Firebase
+	  var config = {
+			// Upload Your Credentials Here
+	  };
+	  firebase.initializeApp(config);
+</script>
+</head>
+<body>
+
+<button type="button" class="btn btn-info btn-lg" data-toggle="modal" data-target="#notiModal">Notifications</button>
+
+<!-- Modal -->
+<div class="modal fade" id="notiModal" role="dialog">
+  <div class="modal-dialog">
+    <!-- Modal content-->
+    <div class="modal-content">
+      <div class="modal-header">
+        <button type="button" class="close" data-dismiss="modal">&times;</button>
+        <h4 class="modal-title">Notification from SenderName</h4>
+      </div>
+
+        <ul id="notification_container"></ul>
+
+      <div class="modal-footer">
+        <button type="button" class="btn btn-default" data-dismiss="modal">Close</button>
+      </div>
+    </div>
+
+  </div>
+</div>
+
+<button type="button" name="button" class="btn btn-danger" onclick="logout()">Logout</button>
+<h1 id="disp_name">None</h1>
+<h1 id="balance">0</h1>
+<!--Engine Section-->
+<center><h1 class="Title">Engine And Fuel System</h1></center>
+<br>
+
+<br>
+<div class=" wrapper-container row">
+<div class="row1 row">
+  <div class="column1">
+    <div class="card">
+      <img src="https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcTxL0j69LZHfk6VuCggEcDJuKr4C6PR0aP93-_zsWzEqiMycaHk0w" alt="Jane" style="width:100%">
+      <div class="container1">
+        <h2>Ferrari F136 engine</h2>
+        <p class="title">Price : 1,00,000 INR </p>
+        <p><button class="button1">Buy</button></p>
+      </div>
+    </div>
+  </div>
+
+  <div class="column1">
+    <div class="card">
+      <img src="https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcTxL0j69LZHfk6VuCggEcDJuKr4C6PR0aP93-_zsWzEqiMycaHk0w" alt="Jane" style="width:100%">
+      <div class="container1">
+        <h2>Hyundai Kappa engine</h2>
+        <p class="title">Price : 99,000 INR </p>
+        <p><button class="button1">Buy</button></p>
+      </div>
+    </div>
+  </div>
+
+  <div class="column1">
+    <div class="card">
+      <img src="https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcTxL0j69LZHfk6VuCggEcDJuKr4C6PR0aP93-_zsWzEqiMycaHk0w" alt="Jane" style="width:100%">
+      <div class="container1">
+        <h2>BMC B-series engine</h2>
+        <p class="title">Price : 98,000 INR </p>
+        <p><button class="button1">Buy</button></p>
+      </div>
+    </div>
+  </div>
+  <div class="column1">
+    <div class="card">
+      <img src="https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcTxL0j69LZHfk6VuCggEcDJuKr4C6PR0aP93-_zsWzEqiMycaHk0w" alt="Jane" style="width:100%">
+      <div class="container1">
+        <h2>Rolls-Royce Merlin</h2>
+        <p class="title">Price : 97,000 INR </p>
+        <p><button class="button1">Buy</button></p>
+      </div>
+    </div>
+  </div>
+  <div class="column1">
+    <div class="card">
+      <img src="https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcTxL0j69LZHfk6VuCggEcDJuKr4C6PR0aP93-_zsWzEqiMycaHk0w" alt="Jane" style="width:100%">
+      <div class="container1">
+        <h2>Toyota LR engine</h2>
+        <p class="title">Price : 96,000 INR </p>
+        <p><button class="button1">Buy</button></p>
+      </div>
+    </div>
+  </div>
+</div>
+<br>
+<div class="row1 row">
+  <div class="column1">
+    <div class="card">
+      <img src="https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcTxL0j69LZHfk6VuCggEcDJuKr4C6PR0aP93-_zsWzEqiMycaHk0w" alt="Jane" style="width:100%">
+      <div class="container1">
+        <h2>Nissan VR engine</h2>
+        <p class="title">Price : 95,000 INR </p>
+        <p><button class="button1">Buy</button></p>
+      </div>
+    </div>
+  </div>
+  <div class="column1">
+    <div class="card">
+      <img src="https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcTxL0j69LZHfk6VuCggEcDJuKr4C6PR0aP93-_zsWzEqiMycaHk0w" alt="Jane" style="width:100%">
+      <div class="container1">
+        <h2>Curtiss OX-5 engine</h2>
+        <p class="title">Price : 94,000 INR </p>
+        <p><button class="button1">Buy</button></p>
+      </div>
+    </div>
+  </div>
+</div>
+</div>
+<br>
+<!--Engine Section Ends -->
+
+<!--Vehicle Structure Section-->
+<center><h1 class="Title">Vehicle Structure</h1></center>
+<br>
+<div class=" wrapper-container row">
+<div class="row1 row">
+  <div class="column1">
+    <div class="card">
+      <img src="https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcTxL0j69LZHfk6VuCggEcDJuKr4C6PR0aP93-_zsWzEqiMycaHk0w" alt="Jane" style="width:100%">
+      <div class="container1">
+        <h2>Ferrari</h2>
+        <p class="title">Price : 99,000 INR </p>
+        <p><button class="button1">Buy</button></p>
+      </div>
+    </div>
+  </div>
+
+  <div class="column1">
+    <div class="card">
+      <img src="https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcTxL0j69LZHfk6VuCggEcDJuKr4C6PR0aP93-_zsWzEqiMycaHk0w" alt="Jane" style="width:100%">
+      <div class="container1">
+        <h2>BMW</h2>
+        <p class="title">Price : 1,00,000 INR </p>
+        <p><button class="button1">Buy</button></p>
+      </div>
+    </div>
+  </div>
+
+  <div class="column1">
+    <div class="card">
+      <img src="https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcTxL0j69LZHfk6VuCggEcDJuKr4C6PR0aP93-_zsWzEqiMycaHk0w" alt="Jane" style="width:100%">
+      <div class="container1">
+        <h2>Ford</h2>
+        <p class="title">Price : 98,000 INR </p>
+        <p><button class="button1">Buy</button></p>
+      </div>
+    </div>
+  </div>
+  <div class="column1">
+    <div class="card">
+      <img src="https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcTxL0j69LZHfk6VuCggEcDJuKr4C6PR0aP93-_zsWzEqiMycaHk0w" alt="Jane" style="width:100%">
+      <div class="container1">
+        <h2>Audi</h2>
+        <p class="title">Price : 97,000 INR </p>
+        <p><button class="button1">Buy</button></p>
+      </div>
+    </div>
+  </div>
+  <div class="column1">
+    <div class="card">
+      <img src="https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcTxL0j69LZHfk6VuCggEcDJuKr4C6PR0aP93-_zsWzEqiMycaHk0w" alt="Jane" style="width:100%">
+      <div class="container1">
+        <h2>Mercedes Benz</h2>
+        <p class="title">Price : 96,000 INR </p>
+        <p><button class="button1">Buy</button></p>
+      </div>
+    </div>
+  </div>
+</div>
+<br>
+<div class="row1 row">
+  <div class="column1">
+    <div class="card">
+      <img src="https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcTxL0j69LZHfk6VuCggEcDJuKr4C6PR0aP93-_zsWzEqiMycaHk0w" alt="Jane" style="width:100%">
+      <div class="container1">
+        <h2>Volkswagen</h2>
+        <p class="title">Price : 95,000 INR </p>
+        <p><button class="button1">Buy</button></p>
+      </div>
+    </div>
+  </div>
+  <div class="column1">
+    <div class="card">
+      <img src="https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcTxL0j69LZHfk6VuCggEcDJuKr4C6PR0aP93-_zsWzEqiMycaHk0w" alt="Jane" style="width:100%">
+      <div class="container1">
+        <h2>Nissan</h2>
+        <p class="title">Price : 94,000 INR </p>
+        <p><button class="button1">Buy</button></p>
+      </div>
+    </div>
+  </div>
+</div>
+</div>
+<br>
+<!--Vehicle Structure Ends -->
+<!--Seat Assembly Section-->
+<center><h1 class="Title">Seat Assembly</h1></center>
+<br>
+<div class=" wrapper-container row">
+<div class="row1 row">
+  <div class="column1">
+    <div class="card">
+      <img src="https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcTxL0j69LZHfk6VuCggEcDJuKr4C6PR0aP93-_zsWzEqiMycaHk0w" alt="Jane" style="width:100%">
+      <div class="container1">
+        <h2>Evenflo Symphony Elite</h2>
+        <p class="title">Price : 25,000 INR </p>
+        <p><button class="button1">Buy</button></p>
+      </div>
+    </div>
+  </div>
+
+  <div class="column1">
+    <div class="card">
+      <img src="https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcTxL0j69LZHfk6VuCggEcDJuKr4C6PR0aP93-_zsWzEqiMycaHk0w" alt="Jane" style="width:100%">
+      <div class="container1">
+        <h2>Graco Extend Fit</h2>
+        <p class="title">Price : 23,000 INR </p>
+        <p><button class="button1">Buy</button></p>
+      </div>
+    </div>
+  </div>
+
+  <div class="column1">
+    <div class="card">
+      <img src="https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcTxL0j69LZHfk6VuCggEcDJuKr4C6PR0aP93-_zsWzEqiMycaHk0w" alt="Jane" style="width:100%">
+      <div class="container1">
+        <h2>Maxi-Cosi Pria Q5 Max</h2>
+        <p class="title">Price : 21,000 INR </p>
+        <p><button class="button1">Buy</button></p>
+      </div>
+    </div>
+  </div>
+  <div class="column1">
+    <div class="card">
+      <img src="https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcTxL0j69LZHfk6VuCggEcDJuKr4C6PR0aP93-_zsWzEqiMycaHk0w" alt="Jane" style="width:100%">
+      <div class="container1">
+        <h2>Britax Marathon G4.1</h2>
+        <p class="title">Price : 20,000 INR </p>
+        <p><button class="button1">Buy</button></p>
+      </div>
+    </div>
+  </div>
+  <div class="column1">
+    <div class="card">
+      <img src="https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcTxL0j69LZHfk6VuCggEcDJuKr4C6PR0aP93-_zsWzEqiMycaHk0w" alt="Jane" style="width:100%">
+      <div class="container1">
+        <h2>Peg Perego Primo</h2>
+        <p class="title">Price : 18,000 INR </p>
+        <p><button class="button1">Buy</button></p>
+      </div>
+    </div>
+  </div>
+</div>
+<br>
+<div class="row1 row">
+  <div class="column1">
+    <div class="card">
+      <img src="https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcTxL0j69LZHfk6VuCggEcDJuKr4C6PR0aP93-_zsWzEqiMycaHk0w" alt="Jane" style="width:100%">
+      <div class="container1">
+        <h2>Chicco Nextfit</h2>
+        <p class="title">Price : 17,000 INR </p>
+        <p><button class="button1">Buy</button></p>
+      </div>
+    </div>
+  </div>
+  <div class="column1">
+    <div class="card">
+      <img src="https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcTxL0j69LZHfk6VuCggEcDJuKr4C6PR0aP93-_zsWzEqiMycaHk0w" alt="Jane" style="width:100%">
+      <div class="container1">
+        <h2>Dion Rainier</h2>
+        <p class="title">Price : 15,000 INR </p>
+        <p><button class="button1">Buy</button></p>
+      </div>
+    </div>
+  </div>
+</div>
+</div>
+<br>
+<!--Seat Assembly Section Ends -->
+<!--Tyres & Wheels Section-->
+<center><h1 class="Title">Tyres & Wheels</h1></center>
+<br>
+<div class=" wrapper-container row">
+<div class="row1 row">
+  <div class="column1">
+    <div class="card">
+      <img src="https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcTxL0j69LZHfk6VuCggEcDJuKr4C6PR0aP93-_zsWzEqiMycaHk0w" alt="Jane" style="width:100%">
+      <div class="container1">
+        <h2>Bridge Stone</h2>
+        <p class="title">Price : 12,000 INR </p>
+        <p><button class="button1">Buy</button></p>
+      </div>
+    </div>
+  </div>
+
+  <div class="column1">
+    <div class="card">
+      <img src="https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcTxL0j69LZHfk6VuCggEcDJuKr4C6PR0aP93-_zsWzEqiMycaHk0w" alt="Jane" style="width:100%">
+      <div class="container1">
+        <h2>MRF</h2>
+        <p class="title">Price : 7,000 INR </p>
+        <p><button class="button1">Buy</button></p>
+      </div>
+    </div>
+  </div>
+
+  <div class="column1">
+    <div class="card">
+      <img src="https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcTxL0j69LZHfk6VuCggEcDJuKr4C6PR0aP93-_zsWzEqiMycaHk0w" alt="Jane" style="width:100%">
+      <div class="container1">
+        <h2>Continental</h2>
+        <p class="title">Price : 9,000 INR </p>
+        <p><button class="button1">Buy</button></p>
+      </div>
+    </div>
+  </div>
+  <div class="column1">
+    <div class="card">
+      <img src="https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcTxL0j69LZHfk6VuCggEcDJuKr4C6PR0aP93-_zsWzEqiMycaHk0w" alt="Jane" style="width:100%">
+      <div class="container1">
+        <h2>GoodYear</h2>
+        <p class="title">Price : 10,000 INR </p>
+        <p><button class="button1">Buy</button></p>
+      </div>
+    </div>
+  </div>
+  <div class="column1">
+    <div class="card">
+      <img src="https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcTxL0j69LZHfk6VuCggEcDJuKr4C6PR0aP93-_zsWzEqiMycaHk0w" alt="Jane" style="width:100%">
+      <div class="container1">
+        <h2>Michelin</h2>
+        <p class="title">Price : 8,000 INR </p>
+        <p><button class="button1">Buy</button></p>
+      </div>
+    </div>
+  </div>
+</div>
+<br>
+<div class="row1 row">
+  <div class="column1">
+    <div class="card">
+      <img src="https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcTxL0j69LZHfk6VuCggEcDJuKr4C6PR0aP93-_zsWzEqiMycaHk0w" alt="Jane" style="width:100%">
+      <div class="container1">
+        <h2>Yokohama</h2>
+        <p class="title">Price : 11,000 INR </p>
+        <p><button class="button1">Buy</button></p>
+      </div>
+    </div>
+  </div>
+  <div class="column1">
+    <div class="card">
+      <img src="https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcTxL0j69LZHfk6VuCggEcDJuKr4C6PR0aP93-_zsWzEqiMycaHk0w" alt="Jane" style="width:100%">
+      <div class="container1">
+        <h2>Hankook</h2>
+        <p class="title">Price : 13,000 INR </p>
+        <p><button class="button1">Buy</button></p>
+      </div>
+    </div>
+  </div>
+</div>
+</div>
+<br>
+<!--Tyres & Wheels Assembly Section Ends -->
+<!--Horn, Breaks & Mirrors Section-->
+<center><h1 class="Title">Horn, Brakes & Mirrors</h1></center>
+<br>
+<div class=" wrapper-container row">
+<div class="row1 row">
+  <div class="column1">
+    <div class="card">
+      <img src="https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcTxL0j69LZHfk6VuCggEcDJuKr4C6PR0aP93-_zsWzEqiMycaHk0w" alt="Jane" style="width:100%">
+      <div class="container1">
+        <h2>Hawk Ceramic Brakes</h2>
+        <p class="title">Price : 5,000 INR </p>
+        <p><button class="button1">Buy</button></p>
+      </div>
+    </div>
+  </div>
+
+  <div class="column1">
+    <div class="card">
+      <img src="https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcTxL0j69LZHfk6VuCggEcDJuKr4C6PR0aP93-_zsWzEqiMycaHk0w" alt="Jane" style="width:100%">
+      <div class="container1">
+        <h2>EBC Yellow Stuff</h2>
+        <p class="title">Price : 4,500 INR </p>
+        <p><button class="button1">Buy</button></p>
+      </div>
+    </div>
+  </div>
+
+  <div class="column1">
+    <div class="card">
+      <img src="https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcTxL0j69LZHfk6VuCggEcDJuKr4C6PR0aP93-_zsWzEqiMycaHk0w" alt="Jane" style="width:100%">
+      <div class="container1">
+        <h2>Posi Quiet Brakes</h2>
+        <p class="title">Price : 4,250 INR </p>
+        <p><button class="button1">Buy</button></p>
+      </div>
+    </div>
+  </div>
+  <div class="column1">
+    <div class="card">
+      <img src="https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcTxL0j69LZHfk6VuCggEcDJuKr4C6PR0aP93-_zsWzEqiMycaHk0w" alt="Jane" style="width:100%">
+      <div class="container1">
+        <h2>Hawk LTS Brakes</h2>
+        <p class="title">Price : 4,000 INR </p>
+        <p><button class="button1">Buy</button></p>
+      </div>
+    </div>
+  </div>
+  <div class="column1">
+    <div class="card">
+      <img src="https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcTxL0j69LZHfk6VuCggEcDJuKr4C6PR0aP93-_zsWzEqiMycaHk0w" alt="Jane" style="width:100%">
+      <div class="container1">
+        <h2>EBS Green Supreme</h2>
+        <p class="title">Price : 3,750 INR </p>
+        <p><button class="button1">Buy</button></p>
+      </div>
+    </div>
+  </div>
+</div>
+<br>
+<div class="row1 row">
+  <div class="column1">
+    <div class="card">
+      <img src="https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcTxL0j69LZHfk6VuCggEcDJuKr4C6PR0aP93-_zsWzEqiMycaHk0w" alt="Jane" style="width:100%">
+      <div class="container1">
+        <h2>Stop Tech Performance</h2>
+        <p class="title">Price : 3,500 INR </p>
+        <p><button class="button1">Buy</button></p>
+      </div>
+    </div>
+  </div>
+  <div class="column1">
+    <div class="card">
+      <img src="https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcTxL0j69LZHfk6VuCggEcDJuKr4C6PR0aP93-_zsWzEqiMycaHk0w" alt="Jane" style="width:100%">
+      <div class="container1">
+        <h2>Wagner Automotive</h2>
+        <p class="title">Price : 5,500 INR </p>
+        <p><button class="button1">Buy</button></p>
+      </div>
+    </div>
+  </div>
+</div>
+</div>
+<br>
+<!--Horn, Brakes & Mirrors Section Ends -->
+<!--Electrical Wiring, Battery & Lights Section-->
+<center><h1 class="Title">Electrical Wiring, Battery & Lights</h1></center>
+<br>
+<div class=" wrapper-container row">
+<div class="row1 row">
+  <div class="column1">
+    <div class="card">
+      <img src="https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcTxL0j69LZHfk6VuCggEcDJuKr4C6PR0aP93-_zsWzEqiMycaHk0w" alt="Jane" style="width:100%">
+      <div class="container1">
+        <h2>AutoCraft</h2>
+        <p class="title">Price : 7,000 INR </p>
+        <p><button class="button1">Buy</button></p>
+      </div>
+    </div>
+  </div>
+
+  <div class="column1">
+    <div class="card">
+      <img src="https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcTxL0j69LZHfk6VuCggEcDJuKr4C6PR0aP93-_zsWzEqiMycaHk0w" alt="Jane" style="width:100%">
+      <div class="container1">
+        <h2>Bosch</h2>
+        <p class="title">Price : 6,500 INR </p>
+        <p><button class="button1">Buy</button></p>
+      </div>
+    </div>
+  </div>
+
+  <div class="column1">
+    <div class="card">
+      <img src="https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcTxL0j69LZHfk6VuCggEcDJuKr4C6PR0aP93-_zsWzEqiMycaHk0w" alt="Jane" style="width:100%">
+      <div class="container1">
+        <h2>DieHard</h2>
+        <p class="title">Price : 6,000 INR </p>
+        <p><button class="button1">Buy</button></p>
+      </div>
+    </div>
+  </div>
+  <div class="column1">
+    <div class="card">
+      <img src="https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcTxL0j69LZHfk6VuCggEcDJuKr4C6PR0aP93-_zsWzEqiMycaHk0w" alt="Jane" style="width:100%">
+      <div class="container1">
+        <h2>DuraLast</h2>
+        <p class="title">Price : 6,250 INR </p>
+        <p><button class="button1">Buy</button></p>
+      </div>
+    </div>
+  </div>
+  <div class="column1">
+    <div class="card">
+      <img src="https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcTxL0j69LZHfk6VuCggEcDJuKr4C6PR0aP93-_zsWzEqiMycaHk0w" alt="Jane" style="width:100%">
+      <div class="container1">
+        <h2>Ever Start</h2>
+        <p class="title">Price : 5,750 INR </p>
+        <p><button class="button1">Buy</button></p>
+      </div>
+    </div>
+  </div>
+</div>
+<br>
+<div class="row1 row">
+  <div class="column1">
+    <div class="card">
+      <img src="https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcTxL0j69LZHfk6VuCggEcDJuKr4C6PR0aP93-_zsWzEqiMycaHk0w" alt="Jane" style="width:100%">
+      <div class="container1">
+        <h2>InterState</h2>
+        <p class="title">Price : 5,500 INR </p>
+        <p><button class="button1">Buy</button></p>
+      </div>
+    </div>
+  </div>
+  <div class="column1">
+    <div class="card">
+      <img src="https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcTxL0j69LZHfk6VuCggEcDJuKr4C6PR0aP93-_zsWzEqiMycaHk0w" alt="Jane" style="width:100%">
+      <div class="container1">
+        <h2>Napa</h2>
+        <p class="title">Price : 5,000 INR </p>
+        <p><button class="button1">Buy</button></p>
+      </div>
+    </div>
+  </div>
+</div>
+</div>
+<br>
+<ul id="users">
+
+</ul>
+<!--Horn, Brakes & Mirrors Section Ends -->
+</body>
+
+</html>
