@@ -2,7 +2,7 @@
 <html>
 <head>
 <meta name="viewport" content="width=device-width, initial-scale=1">
-<link rel="stylesheet" href="main.css">
+<link rel="stylesheet" href="css/main.css">
 <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap.min.css">
 <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.3.1/jquery.min.js"></script>
 <script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/js/bootstrap.min.js"></script>
@@ -15,17 +15,43 @@
 <script src="https://www.gstatic.com/firebasejs/4.9.0/firebase-firestore.js"></script>
 <script src="https://www.gstatic.com/firebasejs/4.9.0/firebase-storage.js"></script>
 <script type="text/javascript" src="main.js">
+
+<script src="https://www.gstatic.com/firebasejs/4.10.1/firebase.js"></script>
 <script>
-	  // Initialize Firebase
-	  var config = {
-			// Upload Your Credentials Here
-	  };
-	  firebase.initializeApp(config);
+  // Initialize Firebase
+  var config = {
+    apiKey: "AIzaSyBG7dUMuv0aXI0iiY5k-qXHCyGRMzdeefo",
+    authDomain: "bidwars-f11fb.firebaseapp.com",
+    databaseURL: "https://bidwars-f11fb.firebaseio.com",
+    projectId: "bidwars-f11fb",
+    storageBucket: "bidwars-f11fb.appspot.com",
+    messagingSenderId: "1063347475906"
+  };
+  firebase.initializeApp(config);
 </script>
+
+
 </head>
 <body>
 
-<button type="button" class="btn btn-info btn-lg" data-toggle="modal" data-target="#notiModal">Notifications</button>
+<nav class="navbar navbar-inverse">
+  <div class="container-fluid">
+    <ul class="nav navbar-nav">
+      <li class="active"><a href="#">Home</a></li>
+	</ul>
+	<!--<div class="navbar-header">
+		<div class="navbar-brand"> Hello user !</div>
+	</div>-->
+    <ul class="nav navbar-nav navbar-right">
+      <li><a style="cursor:pointer;" data-toggle="modal" data-target="#notiModal"><span class="glyphicon glyphicon" ></span> Notifications</a></li>
+      <li><a style="cursor:pointer;" onclick="logout()"><span class="glyphicon glyphicon-log-out"></span> Logout</a></li>
+    </ul>
+  </div>
+</nav>
+
+
+<!--<button type="button" name="button" class="btn btn-danger pull-right" onclick="logout()">Logout</button>
+<button type="button" class="btn btn-info btn-lg pull-right" data-toggle="modal" data-target="#notiModal">Notifications</button>-->
 
 <!-- Modal -->
 <div class="modal fade" id="notiModal" role="dialog">
@@ -47,10 +73,12 @@
   </div>
 </div>
 
-<button type="button" name="button" class="btn btn-danger" onclick="logout()">Logout</button>
-<h1 id="disp_name">None</h1>
-<h1 id="balance">0</h1>
+<h1 style="font-size:2vw" id="disp_name">User name</h1>
+<h1 style="font-size:2vw" id="balance">Balance : 0</h1>
+<br>
 <!--Engine Section-->
+<div class="engine">
+<br>
 <center><h1 class="Title">Engine And Fuel System</h1></center>
 <br>
 
@@ -99,6 +127,10 @@
       </div>
     </div>
   </div>
+</div>
+<br>
+<br>
+<div class="row2 row">
   <div class="column1">
     <div class="card">
       <img src="https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcTxL0j69LZHfk6VuCggEcDJuKr4C6PR0aP93-_zsWzEqiMycaHk0w" alt="Jane" style="width:100%">
@@ -109,9 +141,7 @@
       </div>
     </div>
   </div>
-</div>
-<br>
-<div class="row1 row">
+
   <div class="column1">
     <div class="card">
       <img src="https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcTxL0j69LZHfk6VuCggEcDJuKr4C6PR0aP93-_zsWzEqiMycaHk0w" alt="Jane" style="width:100%">
@@ -135,10 +165,15 @@
 </div>
 </div>
 <br>
+</div>
 <!--Engine Section Ends -->
-
+<br>
 <!--Vehicle Structure Section-->
+<div class="structure">
+<br>
 <center><h1 class="Title">Vehicle Structure</h1></center>
+<br>
+
 <br>
 <div class=" wrapper-container row">
 <div class="row1 row">
@@ -184,6 +219,10 @@
       </div>
     </div>
   </div>
+ </div>
+ <br>
+ <br>
+ <div class="row2 row">
   <div class="column1">
     <div class="card">
       <img src="https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcTxL0j69LZHfk6VuCggEcDJuKr4C6PR0aP93-_zsWzEqiMycaHk0w" alt="Jane" style="width:100%">
@@ -194,9 +233,6 @@
       </div>
     </div>
   </div>
-</div>
-<br>
-<div class="row1 row">
   <div class="column1">
     <div class="card">
       <img src="https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcTxL0j69LZHfk6VuCggEcDJuKr4C6PR0aP93-_zsWzEqiMycaHk0w" alt="Jane" style="width:100%">
@@ -220,9 +256,14 @@
 </div>
 </div>
 <br>
+</div>
 <!--Vehicle Structure Ends -->
+<br>
 <!--Seat Assembly Section-->
+<div class="seat">
+<br>
 <center><h1 class="Title">Seat Assembly</h1></center>
+<br>
 <br>
 <div class=" wrapper-container row">
 <div class="row1 row">
@@ -268,6 +309,10 @@
       </div>
     </div>
   </div>
+  </div>
+  <br>
+  <br>
+  <div class="row2 row">
   <div class="column1">
     <div class="card">
       <img src="https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcTxL0j69LZHfk6VuCggEcDJuKr4C6PR0aP93-_zsWzEqiMycaHk0w" alt="Jane" style="width:100%">
@@ -278,9 +323,6 @@
       </div>
     </div>
   </div>
-</div>
-<br>
-<div class="row1 row">
   <div class="column1">
     <div class="card">
       <img src="https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcTxL0j69LZHfk6VuCggEcDJuKr4C6PR0aP93-_zsWzEqiMycaHk0w" alt="Jane" style="width:100%">
@@ -304,9 +346,13 @@
 </div>
 </div>
 <br>
+</div>
 <!--Seat Assembly Section Ends -->
+<br>
 <!--Tyres & Wheels Section-->
+<div class="tyre">
 <center><h1 class="Title">Tyres & Wheels</h1></center>
+<br>
 <br>
 <div class=" wrapper-container row">
 <div class="row1 row">
@@ -352,6 +398,10 @@
       </div>
     </div>
   </div>
+  </div>
+  <br>
+  <br>
+  <div class="row2 row">
   <div class="column1">
     <div class="card">
       <img src="https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcTxL0j69LZHfk6VuCggEcDJuKr4C6PR0aP93-_zsWzEqiMycaHk0w" alt="Jane" style="width:100%">
@@ -362,9 +412,6 @@
       </div>
     </div>
   </div>
-</div>
-<br>
-<div class="row1 row">
   <div class="column1">
     <div class="card">
       <img src="https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcTxL0j69LZHfk6VuCggEcDJuKr4C6PR0aP93-_zsWzEqiMycaHk0w" alt="Jane" style="width:100%">
@@ -388,9 +435,14 @@
 </div>
 </div>
 <br>
+</div>
 <!--Tyres & Wheels Assembly Section Ends -->
+<br>
 <!--Horn, Breaks & Mirrors Section-->
+<div class="horn">
+<br>
 <center><h1 class="Title">Horn, Brakes & Mirrors</h1></center>
+<br>
 <br>
 <div class=" wrapper-container row">
 <div class="row1 row">
@@ -436,6 +488,10 @@
       </div>
     </div>
   </div>
+  </div>
+  <br>
+  <br>
+  <div class="row2 row">
   <div class="column1">
     <div class="card">
       <img src="https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcTxL0j69LZHfk6VuCggEcDJuKr4C6PR0aP93-_zsWzEqiMycaHk0w" alt="Jane" style="width:100%">
@@ -446,9 +502,6 @@
       </div>
     </div>
   </div>
-</div>
-<br>
-<div class="row1 row">
   <div class="column1">
     <div class="card">
       <img src="https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcTxL0j69LZHfk6VuCggEcDJuKr4C6PR0aP93-_zsWzEqiMycaHk0w" alt="Jane" style="width:100%">
@@ -472,9 +525,14 @@
 </div>
 </div>
 <br>
+</div>
 <!--Horn, Brakes & Mirrors Section Ends -->
+<br>
 <!--Electrical Wiring, Battery & Lights Section-->
+<div class="lights">
+<br>
 <center><h1 class="Title">Electrical Wiring, Battery & Lights</h1></center>
+<br>
 <br>
 <div class=" wrapper-container row">
 <div class="row1 row">
@@ -520,6 +578,10 @@
       </div>
     </div>
   </div>
+  </div>
+  <br>
+  <br>
+  <div class="row2 row">
   <div class="column1">
     <div class="card">
       <img src="https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcTxL0j69LZHfk6VuCggEcDJuKr4C6PR0aP93-_zsWzEqiMycaHk0w" alt="Jane" style="width:100%">
@@ -530,9 +592,6 @@
       </div>
     </div>
   </div>
-</div>
-<br>
-<div class="row1 row">
   <div class="column1">
     <div class="card">
       <img src="https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcTxL0j69LZHfk6VuCggEcDJuKr4C6PR0aP93-_zsWzEqiMycaHk0w" alt="Jane" style="width:100%">
@@ -556,10 +615,11 @@
 </div>
 </div>
 <br>
+</div>
 <ul id="users">
 
 </ul>
-<!--Horn, Brakes & Mirrors Section Ends -->
+<!--Electrical Wiring, Battery & Lights Section-->
 </body>
 
 </html>

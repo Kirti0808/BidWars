@@ -11,17 +11,26 @@
     <script src="https://www.gstatic.com/firebasejs/4.9.0/firebase-database.js"></script>
     <script src="https://www.gstatic.com/firebasejs/4.9.0/firebase-firestore.js"></script>
     <script src="https://www.gstatic.com/firebasejs/4.9.0/firebase-storage.js"></script>
-    <script>
-    	  // Initialize Firebase
-    	  var config = {
-          // Upload Your Credentials Here
-    	  };
-    	  firebase.initializeApp(config);
-    </script>
+    
+<script src="https://www.gstatic.com/firebasejs/4.10.1/firebase.js"></script>
+<script>
+  // Initialize Firebase
+  var config = {
+    apiKey: "AIzaSyBG7dUMuv0aXI0iiY5k-qXHCyGRMzdeefo",
+    authDomain: "bidwars-f11fb.firebaseapp.com",
+    databaseURL: "https://bidwars-f11fb.firebaseio.com",
+    projectId: "bidwars-f11fb",
+    storageBucket: "bidwars-f11fb.appspot.com",
+    messagingSenderId: "1063347475906"
+  };
+  firebase.initializeApp(config);
+</script>
+
+
   </head>
   <style>
     body{
-      background-image:linear-gradient(rgba(0, 0, 0, 0.8), rgba(0, 0, 0, 0.8)), url(bg.jpg);
+      background-image:linear-gradient(rgba(0, 0, 0, 0.8), rgba(0, 0, 0, 0.8)), url(images/bg.jpg);
       height: 100vh;
       background-size: cover;
       background-position: center;
@@ -219,14 +228,14 @@
     <div class="login-page">
       <header id="awd-site-header">
     <div id="awd-site-logo" class="animated" data-animation="fadeInDown" data-animation-delay="500">
-        <a href="http://www.avskr.in/"><img id="fest_logo" src='Aavishkar Logo.png' alt="AAVISHKAR" /></a>
+        <a href="http://www.avskr.in/"><img id="fest_logo" src='images/Aavishkar Logo.png' alt="AAVISHKAR" /></a>
     </div>
     <div class='logos'>
-        <a href="http://www.nitdgp.ac.in/"><img id="nit_logo" src='nit.png' alt="NIT Durgapur"/></a>
-        <a href='#'><img class="logo"  src='white_line.png' /></a>
-        <a href='http://www.saenitd.com/'><img class="logo"  src='sae1.png' /></a>
-        <a href='http://nitdgplug.org/'><img class="logo" src='glug.png' /></a>
-        <a href='http://www.mntc.in'><img class="logo"  src='mntc.png' /></a>
+        <a href="http://www.nitdgp.ac.in/"><img id="nit_logo" src='images/nit.png' alt="NIT Durgapur"/></a>
+        <a href='#'><img class="logo"  src='images/white_line.png' /></a>
+        <a href='http://www.saenitd.com/'><img class="logo"  src='images/sae1.png' /></a>
+        <a href='http://nitdgplug.org/'><img class="logo" src='images/glug.png' /></a>
+        <a href='http://www.mntc.in'><img class="logo"  src='images/mntc.png' /></a>
     </div>
   </header>
 

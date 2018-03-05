@@ -1,3 +1,18 @@
+
+
+
+  // Initialize Firebase
+  var config = {
+    apiKey: "AIzaSyBG7dUMuv0aXI0iiY5k-qXHCyGRMzdeefo",
+    authDomain: "bidwars-f11fb.firebaseapp.com",
+    databaseURL: "https://bidwars-f11fb.firebaseio.com",
+    projectId: "bidwars-f11fb",
+    storageBucket: "bidwars-f11fb.appspot.com",
+    messagingSenderId: "1063347475906"
+  };
+  firebase.initializeApp(config);
+
+
 var config = {
   // Upload Your Credentials Here
 };
