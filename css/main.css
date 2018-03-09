@@ -8,6 +8,8 @@ body {
     overflow-x: hidden;
 }
 
+
+
 #disp_name {
     padding-left: 60px;
     font-family: 'Courgette', cursive;
@@ -125,14 +127,21 @@ body {
     padding-right: 18px;
 }
 
-.row2 {
-    padding-left: 18px;
-    padding-right: 18px;
-}
 
 *, *:before, *:after {
     box-sizing: inherit;
 }
+
+
+
+.column2 {
+    width: 16.66%;
+    float: left;
+    margin-bottom: 16px;
+    padding: 0 18px;
+}
+
+
 
 .column1 {
     font-family: 'Roboto', sans-serif;
@@ -142,17 +151,12 @@ body {
     padding: 0 18px;
 }
 
-.row2 .column1 {
-    
-    margin-left: 85px;
-    font-family: 'Roboto', sans-serif;
-    width: 25%;
-    margin-bottom: 16px;
-    padding: 0 18px;
-}
-
 @media (max-width: 650px) {
   .column1 {
+    width: 100%;
+    display: block;
+  }
+  .column2 {
     width: 100%;
     display: block;
   }
