@@ -18,7 +18,7 @@ body {
 }
 .engine {
     padding: 30px;
-    background-image: linear-gradient(rgba(0, 0, 0, 0.8), rgba(0, 0, 0, 0.8)),url("../images/engine.jpg");
+    background-image: linear-gradient(rgba(0, 0, 0, 0.8), rgba(0, 0, 0, 0.8)),url("http://cdn.wonderfulengineering.com/wp-content/uploads/2013/12/engine-wallpaper-4.jpg");
     background-position: center;
     background-size: cover;
 }
@@ -34,7 +34,7 @@ body {
 
 .structure {
     padding: 30px;
-    background-image: linear-gradient(rgba(0, 0, 0, 0.3), rgba(0, 0, 0, 0.3)),url("../images/structure1.jpg");
+    background-image: linear-gradient(rgba(0, 0, 0, 0.3), rgba(0, 0, 0, 0.3)),url("https://digitalsynopsis.com/wp-content/uploads/2014/06/supercar-wallpapers-bugatti-3.jpg");
     background-position: center;
     background-size: cover;
 }
@@ -152,7 +152,7 @@ body {
 }
 
 @media (max-width: 650px) {
-  .column1 {
+.row1 .row2 .column1 {
     width: 100%;
     display: block;
   }
