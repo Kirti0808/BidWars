@@ -34,26 +34,39 @@
 </head>
 <body>
 
-<nav class="navbar navbar-inverse">
+<nav class="navbar navbar-inverse navbar-fixed-top">
   <div class="container-fluid">
-    <ul class="nav navbar-nav">
-      <li class="active"><a href="#">Home</a></li>
-	</ul>
-	<!--<div class="navbar-header">
-		<div class="navbar-brand"> Hello user !</div>
-	</div>-->
-    <ul class="nav navbar-nav navbar-right">
-      <li><a style="cursor:pointer;" data-toggle="modal" data-target="#notiModal"><span class="glyphicon glyphicon" ></span> Notifications</a></li>
-      <li><a style="cursor:pointer;" onclick="logout()"><span class="glyphicon glyphicon-log-out"></span> Logout</a></li>
-    </ul>
+    <div class="navbar-header">
+		<button type="button" class="navbar-toggle" data-toggle="collapse" data-target="#myNavbar">
+			<span class="icon-bar"></span>
+			<span class="icon-bar"></span>
+			<span class="icon-bar"></span>                        
+		</button>
+		<a class="navbar-brand" href="main.html">BidWars</a>
+		  <!--<div class="nav navbar-nav navbar-toggle" data-toggle="collapse">
+			<a href="#" class="glyphicon glyphicon-user"><h4 id="disp_name" style="display:inline; "></h4> </a></li>
+			<a href="#" class="glyphicon glyphicon-usd"><h4 id="balance" style="display:inline; "></h4> </a></li>
+		  </div>-->
+		
+	</div>
+	<div class="collapse navbar-collapse" id="myNavbar">
+		<ul class="nav navbar-nav">
+		  <li class="active"><a href="#"> Home</a></li>
+		  <li><a style="cursor:pointer" data-toggle="modal" data-target="#UserModal">OnlineUsers</a></li>
+		  <li><a href="#">Rules And Regulations</a></li>
+		  <li><a href="#">Co-ordinators</a></li>
+		</ul>
+		<ul class="nav navbar-nav navbar-right">
+		  <li><a href="#"><span class="glyphicon glyphicon-user"></span><h4 id="disp_name" style="display:inline; padding-left: 3px"></h4> </a></li>
+		  <li><a href="#"><span class="glyphicon glyphicon-usd"></span><h4 id="balance" style="display:inline; padding-left: 3px"></h4> </a></li>
+		  <li><a style="cursor:pointer;" data-toggle="modal" data-target="#notiModal"><span class="glyphicon glyphicon-globe" ></span> Notifications</a></li>
+		  <li><a style="cursor:pointer;" onclick="logout()"><span class="glyphicon glyphicon-log-out"></span> Logout</a></li>
+		</ul>
+	</div>
   </div>
 </nav>
 
-
-<!--<button type="button" name="button" class="btn btn-danger pull-right" onclick="logout()">Logout</button>
-<button type="button" class="btn btn-info btn-lg pull-right" data-toggle="modal" data-target="#notiModal">Notifications</button>-->
-
-<!-- Modal -->
+<!--Notification's Modal -->
 <div class="modal fade" id="notiModal" role="dialog">
   <div class="modal-dialog">
     <!-- Modal content-->
@@ -73,8 +86,34 @@
   </div>
 </div>
 
-<h1 style="font-size:2vw" id="disp_name">User name</h1>
-<h1 style="font-size:2vw" id="balance">Balance : 0</h1>
+
+
+
+<!--Online User's Modal -->
+
+<div class="modal fade" id="UserModal" role="dialog">
+  <div class="modal-dialog">
+    <!-- Modal content-->
+    <div class="modal-content">
+      <div class="modal-header">
+        <button type="button" class="close" data-dismiss="modal">&times;</button>
+        <h4 class="modal-title">Users online now</h4>
+      </div>
+
+        <ul id="notification_container"></ul>
+
+      <div class="modal-footer">
+        <button type="button" class="btn btn-default" data-dismiss="modal">Close</button>
+      </div>
+    </div>
+
+  </div>
+</div>
+
+
+
+<!--<h1 style="font-size:2vw" id="disp_name">User name</h1>
+<h1 style="font-size:2vw" id="balance">Balance : 0</h1>-->
 <br>
 <!--Engine Section-->
 <div class="engine">
@@ -129,8 +168,9 @@
   </div>
 </div>
 <br>
-<br>
-<div class="row2 row">
+
+<div class="row1 row">
+  <div class="column2"> </div>
   <div class="column1">
     <div class="card">
       <img src="https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcTxL0j69LZHfk6VuCggEcDJuKr4C6PR0aP93-_zsWzEqiMycaHk0w" alt="Jane" style="width:100%">
@@ -162,12 +202,13 @@
       </div>
     </div>
   </div>
+  <div class="column2"> </div>
 </div>
 </div>
 <br>
 </div>
 <!--Engine Section Ends -->
-<br>
+
 <!--Vehicle Structure Section-->
 <div class="structure">
 <br>
@@ -221,8 +262,9 @@
   </div>
  </div>
  <br>
- <br>
- <div class="row2 row">
+
+ <div class="row1 row">
+   <div class="column2"> </div>
   <div class="column1">
     <div class="card">
       <img src="https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcTxL0j69LZHfk6VuCggEcDJuKr4C6PR0aP93-_zsWzEqiMycaHk0w" alt="Jane" style="width:100%">
@@ -253,12 +295,13 @@
       </div>
     </div>
   </div>
+  <div class="column2"> </div>
 </div>
 </div>
 <br>
 </div>
 <!--Vehicle Structure Ends -->
-<br>
+
 <!--Seat Assembly Section-->
 <div class="seat">
 <br>
@@ -311,8 +354,9 @@
   </div>
   </div>
   <br>
-  <br>
-  <div class="row2 row">
+ 
+  <div class="row1 row">
+    <div class="column2"> </div>
   <div class="column1">
     <div class="card">
       <img src="https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcTxL0j69LZHfk6VuCggEcDJuKr4C6PR0aP93-_zsWzEqiMycaHk0w" alt="Jane" style="width:100%">
@@ -343,12 +387,13 @@
       </div>
     </div>
   </div>
+    <div class="column2"> </div>
 </div>
 </div>
 <br>
 </div>
 <!--Seat Assembly Section Ends -->
-<br>
+
 <!--Tyres & Wheels Section-->
 <div class="tyre">
 <center><h1 class="Title">Tyres & Wheels</h1></center>
@@ -400,8 +445,9 @@
   </div>
   </div>
   <br>
-  <br>
-  <div class="row2 row">
+
+  <div class="row1 row">
+    <div class="column2"> </div>
   <div class="column1">
     <div class="card">
       <img src="https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcTxL0j69LZHfk6VuCggEcDJuKr4C6PR0aP93-_zsWzEqiMycaHk0w" alt="Jane" style="width:100%">
@@ -437,7 +483,7 @@
 <br>
 </div>
 <!--Tyres & Wheels Assembly Section Ends -->
-<br>
+
 <!--Horn, Breaks & Mirrors Section-->
 <div class="horn">
 <br>
@@ -490,8 +536,9 @@
   </div>
   </div>
   <br>
-  <br>
-  <div class="row2 row">
+
+  <div class="row1 row">
+    <div class="column2"> </div>
   <div class="column1">
     <div class="card">
       <img src="https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcTxL0j69LZHfk6VuCggEcDJuKr4C6PR0aP93-_zsWzEqiMycaHk0w" alt="Jane" style="width:100%">
@@ -527,7 +574,7 @@
 <br>
 </div>
 <!--Horn, Brakes & Mirrors Section Ends -->
-<br>
+
 <!--Electrical Wiring, Battery & Lights Section-->
 <div class="lights">
 <br>
@@ -580,8 +627,9 @@
   </div>
   </div>
   <br>
-  <br>
-  <div class="row2 row">
+
+  <div class="row1 row">
+    <div class="column2"> </div>
   <div class="column1">
     <div class="card">
       <img src="https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcTxL0j69LZHfk6VuCggEcDJuKr4C6PR0aP93-_zsWzEqiMycaHk0w" alt="Jane" style="width:100%">

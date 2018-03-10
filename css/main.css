@@ -2,13 +2,25 @@ html {
     box-sizing: border-box;
 }
 
+
+.navbar {
+    box-shadow:0 2px 8px 0 #333333, 0 2px 10px 0 #404040;
+}
+.navbar:hover {
+    box-size: 5%;
+}
+
+
 body {
     padding-left: 0px;
     padding-right: 0px;
     overflow-x: hidden;
 }
 
+
+
 #disp_name {
+    /*padding-top: 50px;*/
     padding-left: 60px;
     font-family: 'Courgette', cursive;
 }
@@ -16,48 +28,55 @@ body {
     padding-left: 60px;
     font-family: 'Courgette', cursive;
 }
+
 .engine {
     padding: 30px;
     background-image: linear-gradient(rgba(0, 0, 0, 0.8), rgba(0, 0, 0, 0.8)),url("../images/engine.jpg");
     background-position: center;
+    background-repeat: no-repeat;
+    background-attachment: fixed;
     background-size: cover;
 }
 .engine .card {
-    background-color: #ffffff;
-    opacity: 0.8;
-    box-shadow:0 2px 8px 0 #a6a6a6, 0 2px 10px 0 #999999;
+    background-color: #f2f2f2;
+    opacity: 0.9;
+    box-shadow:0 2px 8px 0 #ffffff, 0 2px 10px 0 #e6e6e6
 }
 .engine .card:hover {
-    opacity: 0.9;
+    opacity: 1;
     box-shadow:0 4px 8px 0 #a6a6a6, 0 6px 20px 0 #999999;
 }
 
 .structure {
     padding: 30px;
     background-image: linear-gradient(rgba(0, 0, 0, 0.3), rgba(0, 0, 0, 0.3)),url("../images/structure1.jpg");
+    background-repeat: no-repeat;
+    background-attachment: fixed;
     background-position: center;
     background-size: cover;
 }
 .structure .card {
-    background-color: #fff;
-    opacity: 0.8;
+    background-color: #f2f2f2;
+    opacity: 0.9;
     box-shadow:0 2px 8px 0 #ffffff, 0 2px 10px 0 #e6e6e6
 }
 .structure .card:hover {
-    opacity: 0.9;
-    box-shadow:0 4px 8px 0 #fff, 0 6px 20px 0 #e6e6e6;
+    opacity: 1;
+    box-shadow:0 4px 8px 0 #a6a6a6, 0 6px 20px 0 #999999;
 }
 
 .seat{
     padding: 30px;
     background-image: linear-gradient(rgba(0, 0, 0, 0.6), rgba(0, 0, 0, 0.6)),url("../images/seat1.jpg");
+    background-repeat: no-repeat;
+    background-attachment: fixed;
     background-position: center;
     background-size: cover;
 }
 .seat .card {
-    background-color: #fff;
+    background-color: #f2f2f2;
     opacity: 0.8;
-    box-shadow:0 2px 8px 0 #ffffff, 0 2px 10px 0 #e6e6e6
+    box-shadow:0 2px 8px 0 #ccc, 0 2px 10px 0 #e6e6e6
 }
 .seat .card:hover {
     opacity: 0.9;
@@ -67,13 +86,15 @@ body {
 .tyre{
     padding: 30px;
     background-image: linear-gradient(rgba(0, 0, 0, 0.6), rgba(0, 0, 0, 0.6)),url("../images/tyres.jpg");
+    background-repeat: no-repeat;
+    background-attachment: fixed;
     background-position: center;
     background-size: cover;
 }
 .tyre .card {
-    background-color: #fff;
+    background-color: #f2f2f2;
     opacity: 0.8;
-    box-shadow:0 2px 8px 0 #ffffff, 0 2px 10px 0 #e6e6e6
+    box-shadow:0 2px 8px 0 #ffffff, 0 2px 10px 0 #e6e6e6;
 }
 .tyre .card:hover {
     opacity: 0.9;
@@ -83,11 +104,13 @@ body {
 .horn{
     padding: 30px;
     background-image: linear-gradient(rgba(0, 0, 0, 0.6), rgba(0, 0, 0, 0.6)),url("../images/horn.jpg");
+    background-repeat: no-repeat;
+    background-attachment: fixed;
     background-position: center;
     background-size: cover;
 }
 .horn .card {
-    background-color: #fff;
+    background-color: #f2f2f2;
     opacity: 0.8;
     box-shadow:0 2px 8px 0 #ffffff, 0 2px 10px 0 #e6e6e6
 }
@@ -99,11 +122,13 @@ body {
 .lights{
     padding: 30px;
     background-image: linear-gradient(rgba(0, 0, 0, 0.6), rgba(0, 0, 0, 0.6)),url("../images/headlight.jpg");
+    background-repeat: no-repeat;
+    background-attachment: fixed;
     background-position: center;
     background-size: cover;
 }
 .lights .card {
-    background-color: #fff;
+    background-color: #f2f2f2;
     opacity: 0.8;
     box-shadow:0 2px 8px 0 #ffffff, 0 2px 10px 0 #e6e6e6
 }
@@ -113,11 +138,9 @@ body {
 }
 
 
-
-
 .Title{
     font-family: 'Kavivanar', cursive;
-    color: #ffffff;
+    color: #fff;
 }
 
 .row1 {
@@ -125,14 +148,19 @@ body {
     padding-right: 18px;
 }
 
-.row2 {
-    padding-left: 18px;
-    padding-right: 18px;
-}
 
 *, *:before, *:after {
     box-sizing: inherit;
 }
+
+.column2 {
+    width: 12.50%;
+    float: left;
+    margin-bottom: 16px;
+    padding: 0 18px;
+}
+
+
 
 .column1 {
     font-family: 'Roboto', sans-serif;
@@ -142,17 +170,12 @@ body {
     padding: 0 18px;
 }
 
-.row2 .column1 {
-    
-    margin-left: 85px;
-    font-family: 'Roboto', sans-serif;
-    width: 25%;
-    margin-bottom: 16px;
-    padding: 0 18px;
-}
-
 @media (max-width: 650px) {
   .column1 {
+    width: 100%;
+    display: block;
+  }
+  .column2 {
     width: 100%;
     display: block;
   }
@@ -191,5 +214,5 @@ body {
 }
 
 .button1:hover {
-    background-color: #555;
+    background-color: #262626;
 }
