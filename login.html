@@ -72,9 +72,15 @@
       font-size: 14px;
       cursor: pointer;
     }
-    .form button:hover, .form button:active{
+    .form button:hover {
       background: #43A047;
     }
+	.form button:active {
+	  background:#000;
+	}
+	.form button:focussed {
+	  background: #43A047;
+	}
     .form .message{
       margin: 15px 0 0;
       color: #ffffff;
@@ -99,6 +105,8 @@
       float: left;
     }
     #fest_logo {
+	  padding-left: 10px;
+	  padding-top: 10px;
       width: auto;
       height: auto;
       max-height: 6rem;
@@ -111,9 +119,13 @@
         visibility: visible;
     }
     #nit_logo {
+	  padding-left: 10px;
+	  padding-top: 10px;
       height: 5rem;
     }
     .logo {
+	  padding-right: 10px;
+	  padding-top: 10px;
       height: 5rem!important;
       width: 5rem!important;
       z-index: 2;
@@ -234,14 +246,14 @@
         <a href="http://www.nitdgp.ac.in/"><img id="nit_logo" src='images/nit.png' alt="NIT Durgapur"/></a>
         <a href='#'><img class="logo"  src='images/white_line.png' /></a>
         <a href='http://www.saenitd.com/'><img class="logo"  src='images/sae1.png' /></a>
-        <a href='http://nitdgplug.org/'><img class="logo" src='images/glug.png' /></a>
-        <a href='http://www.mntc.in'><img class="logo"  src='images/mntc.png' /></a>
+        <!--<a href='http://nitdgplug.org/'><img class="logo" src='images/glug.png' /></a>
+        <a href='http://www.mntc.in'><img class="logo"  src='images/mntc.png' /></a>-->
     </div>
   </header>
 
       <div class="form">
         <h1 class="Title1">Aavishkar 2k18</h1>
-        <h1 class="Title2">Event Name</h1>
+        <h1 class="Title2">Bidwars</h1>
         <form class="registration-form">
           <input type="text" placeholder="Name" id="name">
           <input type="email" placeholder="Email" id="email">

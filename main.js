@@ -1,7 +1,8 @@
-
-
-
-  // Initialize Firebase
+/*var config = {
+  //paste your credentials
+};
+firebase.initializeApp(config);*/
+// Initialize Firebase
   var config = {
     apiKey: "AIzaSyBG7dUMuv0aXI0iiY5k-qXHCyGRMzdeefo",
     authDomain: "bidwars-f11fb.firebaseapp.com",
@@ -11,12 +12,6 @@
     messagingSenderId: "1063347475906"
   };
   firebase.initializeApp(config);
-
-
-var config = {
-  // Upload Your Credentials Here
-};
-firebase.initializeApp(config);
 var fs=firebase.firestore();
 var db=firebase.database();
 
@@ -40,7 +35,14 @@ function signup() {
                 Tyres:0,
                 Brakes: 0,
                 ElectricalWiring: 0,
-                Balance: 0
+                Balance: 0,
+                a: -1,
+                b: -1,
+                c: -1,
+                d: -1,
+                e: -1,
+                f: -1,
+                g: -1
             })
             firebase.database().ref('users/' + user.uid).set({
               status: "true"
@@ -84,6 +86,8 @@ function login() {
 }
 var uid;
 var statusRef;
+var balance;
+var engine_arg_cancel, engine;
 //Auth Change Listener
 firebase.auth().onAuthStateChanged(function(user) {
   if (user) {
@@ -126,6 +130,26 @@ firebase.auth().onAuthStateChanged(function(user) {
         }).catch(error => {
           console.log(error.message);
           });
+
+      firebase.firestore().collection("UsersUID").doc(uid).onSnapshot(function(doc){
+        balance = doc.data().Balance;
+        engine = doc.data().Engine;
+        if(doc.data().a != -1){
+          engine_arg_cancel = 'eb'+doc.data().a;
+          document.getElementById('eb'+doc.data().a).innerHTML = "<button class='button1' onClick='cancelEngine()'>Cancel</button>";
+          document.getElementById('eb'+doc.data().a).style.display = 'block';
+          var p
+          for(p=1; p<=7; p++){
+              document.getElementById('ea'+p).style.display = 'none';
+          }
+        }
+        else{
+          for(p=1; p<=7; p++){
+            document.getElementById('ea'+p).style.display = 'block';
+            document.getElementById('eb'+p).style.display = 'none';
+          }
+        }
+      });
   }
   else {
     window.location.href = "login.html";
@@ -193,10 +217,10 @@ function sendRequest(id) {
 }
 
 function acceptRequest(other_id) {
+
     var updates = {};
     updates['/request/' + uid + "/" + other_id] = null;
     updates['/request/' + other_id + '/' + uid] = null;
-
   firebase.database().ref().update(updates, function(error) {
     if (error) {
       alert("Data could not be saved." + error);
@@ -216,6 +240,17 @@ function acceptRequest(other_id) {
       });
 
     }
+  });
+
+  firebase.firestore().collection("UsersUID").doc(uid).update({
+    ExitContidition : 0
+  }).then(function(){
+    return;
+  });
+  firebase.firestore().collection("UsersUID").doc(other_id).update({
+    ExitContidition : 0
+  }).then(function(){
+    return;
   });
 }
 
@@ -243,5 +278,78 @@ firebase.auth().signOut().then(function() {
   //window.location.href = "login.html"
   }).catch(function(error) {
     // An error happened.
+  });
+}
+
+//Function to buy engine
+function buyEngine(id) {
+  cancelElement = id[0]+'b'+id[2];
+  balance = parseInt(balance);
+  var cost;
+  if(parseInt(id[2]) == 1){
+    cost = 100000;
+    if(balance<100000){
+    window.alert("Insufficient Balance to Buy");
+    return;}
+  }
+  else if(parseInt(id[2]) == 2){
+    cost = 99000;
+    if(balance<99000){
+    window.alert("Insufficient Balance to Buy");
+    return;}
+  }
+  else if(parseInt(id[2]) == 3){
+    cost = 98000;
+    if(balance<98000){
+    window.alert("Insufficient Balance to Buy");
+    return;}
+  }
+  else if(parseInt(id[2]) == 4){
+    cost = 97000;
+    if(balance<97000){
+    window.alert("Insufficient Balance to Buy");
+    return;}
+  }
+  else if(parseInt(id[2]) == 5){
+    cost = 96000;
+    if(balance<96000){
+    window.alert("Insufficient Balance to Buy");
+    return;}
+  }
+  else if(parseInt(id[2]) == 6){
+    cost = 95000;
+    if(balance<95000){
+    window.alert("Insufficient Balance to Buy");
+    return;
+    }
+  }
+  else{
+    if(parseInt(id[2]) == 7){
+      cost = 94000;
+      if(balance<94000){
+      window.alert("Insufficient Balance to Buy");
+      return;
+      }
+    }
+  }
+  document.getElementById(id).style.display = "none";
+  document.getElementById('eb'+id[2]).innerHTML = "<button class='button1'>Cancel</button>";
+  firebase.firestore().collection("UsersUID").doc(uid).update({
+    Balance : parseInt(balance) - cost,
+    Engine : cost,
+    a: parseInt(id[2])
+  }).then(function(){
+    return;
+  });
+}
+
+//Function to Cancel Engine
+function cancelEngine(){
+  firebase.firestore().collection("UsersUID").doc(uid).update({
+    Balance : parseInt(balance) + engine,
+    Engine : 0,
+    a: -1
+  }).then(function(){
+    return;
   });
 }

@@ -1,0 +1,276 @@
+<!DOCTYPE html>
+<html>
+<head>
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<link rel="stylesheet" href="css/main.css">
+<link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap.min.css">
+<script src="https://ajax.googleapis.com/ajax/libs/jquery/3.3.1/jquery.min.js"></script>
+<script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/js/bootstrap.min.js"></script>
+<link href="https://fonts.googleapis.com/css?family=Kavivanar" rel="stylesheet">
+<link href="https://fonts.googleapis.com/css?family=Kaushan+Script|Roboto" rel="stylesheet">
+<script src="https://www.gstatic.com/firebasejs/4.9.0/firebase.js"></script>
+<script src="https://www.gstatic.com/firebasejs/4.9.0/firebase-app.js"></script>
+<script src="https://www.gstatic.com/firebasejs/4.9.0/firebase-auth.js"></script>
+<script src="https://www.gstatic.com/firebasejs/4.9.0/firebase-database.js"></script>
+<script src="https://www.gstatic.com/firebasejs/4.9.0/firebase-firestore.js"></script>
+<script src="https://www.gstatic.com/firebasejs/4.9.0/firebase-storage.js"></script>
+<script type="text/javascript" src="main.js">
+
+<script src="https://www.gstatic.com/firebasejs/4.10.1/firebase.js"></script>
+<script>
+  // Initialize Firebase
+  var config = {
+    apiKey: "AIzaSyBG7dUMuv0aXI0iiY5k-qXHCyGRMzdeefo",
+    authDomain: "bidwars-f11fb.firebaseapp.com",
+    databaseURL: "https://bidwars-f11fb.firebaseio.com",
+    projectId: "bidwars-f11fb",
+    storageBucket: "bidwars-f11fb.appspot.com",
+    messagingSenderId: "1063347475906"
+  };
+  firebase.initializeApp(config);
+</script>
+
+<style>
+	<!--.coordinator-info {
+		padding:30px;
+	}
+	.col-1.5 {
+		width: 12.5%;
+	}
+	
+	.col-3 {
+		width: 25%;
+	}-->
+	
+	
+	
+html {
+  box-sizing: border-box;
+}
+
+body {
+  background-color: #1a1a1a;
+  background-image: linear-gradient(rgba(0, 0, 0, 0.6), rgba(0, 0, 0, 0.6)),url("images/sae1.png");
+  background-repeat: no-repeat;
+  background-attachment: fixed;
+  background-position: center;
+  background-size: contain;
+}
+
+*, *:before, *:after {
+  box-sizing: inherit;
+}
+
+.column {
+  float: left;
+  width: 25%;
+  margin-bottom: 16px;
+  padding: 0 18px;
+}
+
+.col1 {
+  float: left;
+  width: 12.5%;
+  margin-bottom: 16px;
+  padding: 0 18px;
+}
+
+@media (max-width: 650px) {
+  .column {
+    width: 100%;
+    display: block;
+  }
+}
+
+@media only screen and (max-width: 768px) {
+    /* For mobile phones: */
+    [class*="col-"] {
+        width: 100%;
+    }
+}
+
+.card {
+  height: 400px;
+  opacity: 0.9;
+  background-color: #f2f2f2;
+  box-shadow:0 2px 8px 0 #ffffff, 0 2px 10px 0 #e6e6e6;
+}
+
+.card img {
+	width: 100%;
+	height: 60%;
+}
+
+.card:hover {
+    opacity: 1;
+    box-shadow:0 4px 8px 0 #a6a6a6, 0 6px 20px 0 #999999;
+}
+
+.container {
+  padding: 0 16px;
+  width: 100%;
+  height:40%;
+}
+
+.container::after, .row::after {
+  content: "";
+  clear: both;
+  display: table;
+}
+
+p {
+  word-wrap: break-word;
+}
+
+.title {
+  color: grey;
+}
+
+.button {
+  border: none;
+  outline: 0;
+  display: inline-block;
+  padding: 8px;
+  color: white;
+  background-color: #000;
+  text-align: center;
+  cursor: pointer;
+  width: 100%;
+}
+
+.button:hover {
+  background-color: #555;
+}
+
+
+</style>
+</head>
+<body>
+
+<nav class="navbar navbar-inverse navbar-fixed-top">
+  <div class="container-fluid">
+    <div class="navbar-header">
+		<button type="button" class="navbar-toggle" data-toggle="collapse" data-target="#myNavbar">
+			<span class="icon-bar"></span>
+			<span class="icon-bar"></span>
+			<span class="icon-bar"></span>                        
+		</button>
+		<a class="navbar-brand" href="main.html">BidWars</a>
+		  <!--<div class="nav navbar-nav navbar-toggle" data-toggle="collapse">
+			<a href="#" class="glyphicon glyphicon-user"><h4 id="disp_name" style="display:inline; "></h4> </a></li>
+			<a href="#" class="glyphicon glyphicon-usd"><h4 id="balance" style="display:inline; "></h4> </a></li>
+		  </div>-->
+		
+	</div>
+	<div class="collapse navbar-collapse" id="myNavbar">
+		<ul class="nav navbar-nav">
+		  <li><a href="main.html"> Home</a></li>
+		  <li><a style="cursor:pointer" data-toggle="modal" data-target="#UserModal">OnlineUsers</a></li>
+		  <li><a href="rules.html">Rules And Regulations</a></li>
+		  <li class="active"><a href="#">Co-ordinators</a></li>
+		</ul>
+		<ul class="nav navbar-nav navbar-right">
+		  <li><a href="#"><span class="glyphicon glyphicon-user"></span><h4 id="disp_name" style="display:inline; padding-left: 3px"></h4> </a></li>
+		  <li><a href="#"><span class="glyphicon glyphicon-usd"></span><h4 id="balance" style="display:inline; padding-left: 3px"></h4> </a></li>
+		  <li><a style="cursor:pointer;" data-toggle="modal" data-target="#notiModal"><span class="glyphicon glyphicon-globe" ></span> Notifications</a></li>
+		  <li><a style="cursor:pointer;" onclick="logout()"><span class="glyphicon glyphicon-log-out"></span> Logout</a></li>
+		</ul>
+	</div>
+  </div>
+</nav>
+
+<!--Notification's Modal -->
+<div class="modal fade" id="notiModal" role="dialog">
+  <div class="modal-dialog">
+    <!-- Modal content-->
+    <div class="modal-content">
+      <div class="modal-header">
+        <button type="button" class="close" data-dismiss="modal">&times;</button>
+        <h4 class="modal-title">Notification from SenderName</h4>
+      </div>
+
+        <ul id="notification_container"></ul>
+
+      <div class="modal-footer">
+        <button type="button" class="btn btn-default" data-dismiss="modal">Close</button>
+      </div>
+    </div>
+
+  </div>
+</div>
+
+
+
+
+<!--Online User's Modal -->
+
+<div class="modal fade" id="UserModal" role="dialog">
+  <div class="modal-dialog">
+    <!-- Modal content-->
+    <div class="modal-content">
+      <div class="modal-header">
+        <button type="button" class="close" data-dismiss="modal">&times;</button>
+        <h4 class="modal-title">Users online now</h4>
+      </div>
+
+        <ul id="notification_container"></ul>
+
+      <div class="modal-footer">
+        <button type="button" class="btn btn-default" data-dismiss="modal">Close</button>
+      </div>
+    </div>
+
+  </div>
+</div>
+
+<br>
+<br>
+<div class="coordinator-info">
+	<br>
+	<br>
+	<br>
+	
+	<div class="row">
+		<div class="col1"> </div>
+		<div class="column">
+			<div class="card">
+				<img src="https://scontent-bom1-1.xx.fbcdn.net/v/t1.0-9/17458300_1259742334144296_1956730233360129786_n.jpg?oh=b9e26132194097466adf820dc624f297&oe=5B3E6C94" alt="Anand">
+				<div class="container">
+					<h4><strong>Anand Jhunjhunwala</strong></h4>
+					<p class="title">Senior event co-ordinator</p>
+					<p>anandjhunjhunwala@gmail.com</p>
+					<p><button class="button">Contact</button></p>
+				</div>
+			</div>
+		</div>
+	
+		<div class="column">
+			<div class="card">
+				<img src="https://scontent-bom1-1.xx.fbcdn.net/v/t1.0-9/29062754_1556115547842942_7527223077239783424_n.jpg?oh=22b918f8c0c591954a3e2a04f53b5f5c&oe=5B37A0A1" alt="Vaibhav">
+				<div class="container">
+					<h4><strong>Vaibhav Mishra</strong></h4>
+					<p class="title">Junior event co-ordinator</p>
+					<p>vaibhavmishra@gmail.com</p>
+					<p><button class="button">Contact</button></p>
+				</div>
+			</div>
+		</div>
+		
+		<div class="column">
+			<div class="card">
+				<img src="https://scontent-cdg2-1.xx.fbcdn.net/v/t1.0-9/20994275_646920998845395_395244090430284124_n.jpg?oh=b0fcdd23e463815e891ff93233f58376&oe=5B38044C" alt="Kirti">
+				<div class="container">
+					<h4><strong>Kirti Gupta</strong></h4>		
+					<p class="title">Junior event co-ordinator</p>
+					<p>gupta.kirti0808@gmail.com</p>
+					<p><button class="button">Contact</button></p>
+				</div>
+			</div>
+		</div>
+		<div class="col1"></div>
+	</div>
+</div>
+
+
+</body>
+</html>

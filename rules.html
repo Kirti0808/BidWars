@@ -1,0 +1,162 @@
+<!DOCTYPE html>
+<html>
+<head>
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<link rel="stylesheet" href="css/main.css">
+<link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap.min.css">
+<script src="https://ajax.googleapis.com/ajax/libs/jquery/3.3.1/jquery.min.js"></script>
+<script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/js/bootstrap.min.js"></script>
+<link href="https://fonts.googleapis.com/css?family=Kavivanar" rel="stylesheet">
+<link href="https://fonts.googleapis.com/css?family=Kaushan+Script|Roboto" rel="stylesheet">
+<script src="https://www.gstatic.com/firebasejs/4.9.0/firebase.js"></script>
+<script src="https://www.gstatic.com/firebasejs/4.9.0/firebase-app.js"></script>
+<script src="https://www.gstatic.com/firebasejs/4.9.0/firebase-auth.js"></script>
+<script src="https://www.gstatic.com/firebasejs/4.9.0/firebase-database.js"></script>
+<script src="https://www.gstatic.com/firebasejs/4.9.0/firebase-firestore.js"></script>
+<script src="https://www.gstatic.com/firebasejs/4.9.0/firebase-storage.js"></script>
+<script type="text/javascript" src="main.js">
+
+<script src="https://www.gstatic.com/firebasejs/4.10.1/firebase.js"></script>
+<script>
+  // Initialize Firebase
+  var config = {
+    apiKey: "AIzaSyBG7dUMuv0aXI0iiY5k-qXHCyGRMzdeefo",
+    authDomain: "bidwars-f11fb.firebaseapp.com",
+    databaseURL: "https://bidwars-f11fb.firebaseio.com",
+    projectId: "bidwars-f11fb",
+    storageBucket: "bidwars-f11fb.appspot.com",
+    messagingSenderId: "1063347475906"
+  };
+  firebase.initializeApp(config);
+</script>
+
+<style>
+
+	body {
+	  background-color: #1a1a1a;
+	  background-image: linear-gradient(rgba(0, 0, 0, 0.8), rgba(0, 0, 0, 0.8)),url("images/sae1.png");
+	  background-repeat: no-repeat;
+      background-attachment: fixed;
+      background-position: center;
+      background-size: contain;
+	}
+	
+	.col1 {
+	  
+	  }
+	
+	.rules {
+	  opacity: 1;
+	  color: #fff;
+	  font-family: 'Kavivanar', cursive;
+	  word-spacing: 5px;
+	  line-height: 1.6;
+	  padding-top: 100px;
+	  padding-left: 20px;
+	  display: inline-block;
+	  margin-left: auto;
+	  margin-right: auto;
+	}
+	
+	.rules li {
+	  margin: 15px;
+	}
+
+</style>
+
+</head>
+<body>
+
+<nav class="navbar navbar-inverse navbar-fixed-top">
+  <div class="container-fluid">
+    <div class="navbar-header">
+		<button type="button" class="navbar-toggle" data-toggle="collapse" data-target="#myNavbar">
+			<span class="icon-bar"></span>
+			<span class="icon-bar"></span>
+			<span class="icon-bar"></span>                        
+		</button>
+		<a class="navbar-brand" href="main.html">BidWars</a>
+		  <!--<div class="nav navbar-nav navbar-toggle" data-toggle="collapse">
+			<a href="#" class="glyphicon glyphicon-user"><h4 id="disp_name" style="display:inline; "></h4> </a></li>
+			<a href="#" class="glyphicon glyphicon-usd"><h4 id="balance" style="display:inline; "></h4> </a></li>
+		  </div>-->
+		
+	</div>
+	<div class="collapse navbar-collapse" id="myNavbar">
+		<ul class="nav navbar-nav">
+		  <li><a href="main.html"> Home</a></li>
+		  <li><a style="cursor:pointer" data-toggle="modal" data-target="#UserModal">OnlineUsers</a></li>
+		  <li class="active"><a href="#">Rules And Regulations</a></li>
+		  <li><a href="coordinators.html">Co-ordinators</a></li>
+		</ul>
+		<ul class="nav navbar-nav navbar-right">
+		  <li><a href="#"><span class="glyphicon glyphicon-user"></span><h4 id="disp_name" style="display:inline; padding-left: 3px"></h4> </a></li>
+		  <li><a href="#"><span class="glyphicon glyphicon-usd"></span><h4 id="balance" style="display:inline; padding-left: 3px"></h4> </a></li>
+		  <li><a style="cursor:pointer;" data-toggle="modal" data-target="#notiModal"><span class="glyphicon glyphicon-globe" ></span> Notifications</a></li>
+		  <li><a style="cursor:pointer;" onclick="logout()"><span class="glyphicon glyphicon-log-out"></span> Logout</a></li>
+		</ul>
+	</div>
+  </div>
+</nav>
+
+<!--Notification's Modal -->
+<div class="modal fade" id="notiModal" role="dialog">
+  <div class="modal-dialog">
+    <!-- Modal content-->
+    <div class="modal-content">
+      <div class="modal-header">
+        <button type="button" class="close" data-dismiss="modal">&times;</button>
+        <h4 class="modal-title">Notification from SenderName</h4>
+      </div>
+
+        <ul id="notification_container"></ul>
+
+      <div class="modal-footer">
+        <button type="button" class="btn btn-default" data-dismiss="modal">Close</button>
+      </div>
+    </div>
+
+  </div>
+</div>
+
+
+
+
+<!--Online User's Modal -->
+
+<div class="modal fade" id="UserModal" role="dialog">
+  <div class="modal-dialog">
+    <!-- Modal content-->
+    <div class="modal-content">
+      <div class="modal-header">
+        <button type="button" class="close" data-dismiss="modal">&times;</button>
+        <h4 class="modal-title">Users online now</h4>
+      </div>
+
+        <ul id="notification_container"></ul>
+
+      <div class="modal-footer">
+        <button type="button" class="btn btn-default" data-dismiss="modal">Close</button>
+      </div>
+    </div>
+
+  </div>
+ </div>
+
+ <div class="col1"> </div>
+ <div class="rules">
+	<h4><strong> The following rules should be followed while playing BIDWARS : </strong></h4>
+	<br>
+	<ol>
+		<li> jbdjwehj </li>
+		<li> jsbdfhjwd </li>
+	</ol>
+</div>
+
+</body>
+</html>
+
+
+
+
+
